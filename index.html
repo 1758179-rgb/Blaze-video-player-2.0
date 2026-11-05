@@ -6,12 +6,12 @@
     <title>Blaze's video player 2.0</title>
     <meta
       name="description"
-      content="Blaze's video player 2.0 — a sleek anime streaming interface inspired by modern streaming platforms."
+      content="Blaze's video player 2.0 - a streaming interface inspired by anime content sites."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -19,14 +19,18 @@
   <body>
     <div class="page-shell">
       <header class="topbar">
-        <div class="brand" aria-label="Blaze's video player 2.0">
-          <div class="brand-mark">B</div>
+        <div class="brand-wrap" aria-label="Blaze's video player 2.0">
+          <div class="brand-icon">B</div>
           <div class="brand-text">Blaze's video player <span>2.0</span></div>
+        </div>
+
+        <div class="top-search" aria-label="Search">
+          <span class="search-icon">⌕</span>
         </div>
 
         <nav class="main-nav" aria-label="Main navigation">
           <a href="#">Home</a>
-          <a href="#">Browse</a>
+          <a href="#">Anime</a>
           <a href="#">Movies</a>
           <a href="#">New</a>
           <a href="#">Community</a>
@@ -35,13 +39,13 @@
         <button class="login-btn" type="button">Login</button>
       </header>
 
-      <main class="hero" aria-label="Featured anime section">
-        <div class="hero-copy">
-          <p class="spotlight">#2 Spotlight</p>
+      <main class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">#2 Spotlight</p>
           <h1>Sakamoto Days Part 2</h1>
 
           <div class="meta-row" aria-label="Series metadata">
-            <span class="pill">TV</span>
+            <span class="meta-pill">TV</span>
             <span>●</span>
             <span>4K</span>
             <span>●</span>
@@ -51,7 +55,7 @@
           </div>
 
           <p class="description">
-            When Sakamoto meets Aoi, the convenience store clerk has a long way to go before
+            When Sakomoto meets Aoi, the convenience store clerk has a long way to go before
             she can catch up with the fast-moving world around her. Action, comedy, and an uneasy
             alliance collide in this bold new chapter.
           </p>
@@ -62,17 +66,18 @@
           </div>
         </div>
 
-        <div class="hero-visual" aria-hidden="true">
-          <div class="art-glow"></div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-sheen"></div>
+          <div class="art-mask"></div>
           <div class="art-figure"></div>
-          <div class="poster-title">SAKAMOTO<br />DAYS</div>
+          <div class="art-title">SAKAMOTO<br />DAYS</div>
         </div>
 
-        <button class="nav-arrow left" type="button" aria-label="Previous">‹</button>
+        <button class="nav-arrow left" type="button" aria-label="Previous">›</button>
         <button class="nav-arrow right" type="button" aria-label="Next">›</button>
       </main>
 
-      <section class="trending" aria-label="Trending list">
+      <section class="trending" aria-label="Trending anime list">
         <div class="section-header">
           <h2>Trending</h2>
         </div>
