@@ -16,6 +16,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="player.css" />
+    <link rel="stylesheet" href="bleach.css" />
   </head>
   <body>
     <div class="page-shell">
@@ -40,29 +41,27 @@
         <button class="login-btn" type="button">Login</button>
       </header>
 
-      <main class="hero">
+      <main class="hero bleach-featured">
         <div class="hero-content">
-          <p class="eyebrow">#2 Spotlight</p>
-          <h1>Featured Series</h1>
+          <p class="eyebrow">FEATURED SERIES</p>
+          <h1>Bleach: Thousand-Year Blood War — The Calamity</h1>
 
           <div class="meta-row" aria-label="Series metadata">
             <span class="meta-pill">TV</span>
             <span>●</span>
-            <span>4K</span>
+            <span>Anime</span>
             <span>●</span>
-            <span>1h 35m</span>
+            <span>Season</span>
             <span>●</span>
-            <span>2025</span>
+            <span>10 Episodes</span>
           </div>
 
           <p class="description">
-            A new chapter begins with action, intensity, and a sharp sense of style. From the first
-            minute, this featured release builds momentum with cinematic pacing, thrilling moments,
-            and a bold visual identity that fits the streaming experience perfectly.
+            The Thousand-Year Blood War continues. Watch The Calamity episodes in the player below.
           </p>
 
           <div class="cta-row">
-            <button id="watchButton" class="primary-btn" type="button">Watch Now</button>
+            <button id="watchButton" class="primary-btn" type="button">Watch Episode 1</button>
             <button class="secondary-btn" type="button" onclick="document.getElementById('episodesGrid').scrollIntoView({ behavior: 'smooth' })">Browse Episodes</button>
           </div>
         </div>
@@ -71,10 +70,10 @@
           <div class="art-sheen"></div>
           <div class="art-mask"></div>
           <div class="art-figure"></div>
-          <div class="art-title">FEATURED</div>
+          <div class="art-title">BLEACH</div>
         </div>
 
-        <button class="nav-arrow left" type="button" aria-label="Previous">›</button>
+        <button class="nav-arrow left" type="button" aria-label="Previous">‹</button>
         <button class="nav-arrow right" type="button" aria-label="Next">›</button>
       </main>
 
@@ -115,7 +114,7 @@
 
       <section class="trending" aria-label="Trending anime list">
         <div class="section-header">
-          <h2>Trending</h2>
+          <h2>Episodes &amp; Series</h2>
         </div>
 
         <div id="episodesGrid" class="episodes-grid"></div>

@@ -1,0 +1,111 @@
+/* Featured Bleach series and episode posters. */
+.bleach-featured {
+  background-image:
+    linear-gradient(90deg, rgba(8, 6, 12, 0.95) 0%, rgba(12, 7, 13, 0.82) 42%, rgba(10, 7, 14, 0.2) 100%),
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjVwbN6jMNK0bc-rCyZuRwAbN46HVlx9AfnqFyMkmp4EKGByAMrH50RpY:https://cdnwebsite.japan-expo.com/website/website/event_picture/000000010157&s=10");
+  background-size: cover;
+  background-position: center 28%;
+}
+
+.bleach-featured::before {
+  background: linear-gradient(90deg, rgba(8, 6, 12, 0.48), rgba(8, 6, 12, 0.02) 70%);
+}
+
+.bleach-featured .hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(58%, 680px);
+  padding: 46px 8px 32px 22px;
+}
+
+.bleach-featured .hero-content h1 {
+  margin: 0;
+  max-width: 700px;
+  color: #fff;
+  font-size: clamp(2.2rem, 5vw, 4.8rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.bleach-featured .eyebrow {
+  margin: 0 0 14px;
+  color: #ff6576;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.bleach-featured .description {
+  max-width: 500px;
+}
+
+.bleach-featured .hero-art {
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 0 auto;
+  width: 52%;
+  min-height: 100%;
+  pointer-events: none;
+}
+
+.bleach-featured .hero-art > :not(.art-figure) {
+  display: none;
+}
+
+.bleach-featured .art-figure {
+  position: absolute;
+  right: 7%;
+  bottom: 0;
+  width: min(62%, 360px);
+  height: 88%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px 20px 0 0;
+  background-image:
+    linear-gradient(180deg, transparent 56%, rgba(3, 3, 8, 0.68)),
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjVwbN6jMNK0bc-rCyZuRwAbN46HVlx9AfnqFyMkmp4EKGByAMrH50RpY:https://cdnwebsite.japan-expo.com/website/website/event_picture/000000010157&s=10");
+  background-position: center 22%;
+  background-size: cover;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.42);
+}
+
+.bleach-featured .art-figure::before,
+.bleach-featured .art-figure::after {
+  display: none;
+}
+
+.episode-card.bleach .card-art {
+  background-image:
+    linear-gradient(180deg, rgba(10, 5, 10, 0.02), rgba(4, 4, 8, 0.62) 100%),
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjVwbN6jMNK0bc-rCyZuRwAbN46HVlx9AfnqFyMkmp4EKGByAMrH50RpY:https://cdnwebsite.japan-expo.com/website/website/event_picture/000000010157&s=10");
+  background-position: center 23%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.playlist-thumb.bleach {
+  background-image:
+    linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.3)),
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjVwbN6jMNK0bc-rCyZuRwAbN46HVlx9AfnqFyMkmp4EKGByAMrH50RpY:https://cdnwebsite.japan-expo.com/website/website/event_picture/000000010157&s=10");
+  background-position: center 22%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 700px) {
+  .bleach-featured .hero-content {
+    width: 100%;
+    padding: 24px 4px 16px;
+  }
+
+  .bleach-featured .hero-art {
+    width: 100%;
+    opacity: 0.35;
+  }
+
+  .bleach-featured .art-figure {
+    right: 0;
+    width: 70%;
+  }
+}

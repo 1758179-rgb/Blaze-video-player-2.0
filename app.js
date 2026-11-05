@@ -52,9 +52,100 @@ const episodes = [
     accent: '#6d7bff',
     url: 'https://drive.google.com/file/d/1_2IRqyvqfWzmb7nB9O6nIhCvk9k0OQhA/view?usp=sharing',
     poster: 'beerus'
+  },
+  {
+    id: 7,
+    name: 'The Calamity E1',
+    subtitle: 'Bleach: Thousand-Year Blood War',
+    type: 'anime',
+    accent: '#e33b4b',
+    url: 'https://drive.google.com/file/d/16WKuep15ZwUTpCIZVM0A0hHvHuIbn7to/view?usp=drive_link',
+    poster: 'bleach'
+  },
+  {
+    id: 8,
+    name: 'The Calamity E2',
+    subtitle: 'Bleach: Thousand-Year Blood War',
+    type: 'anime',
+    accent: '#d93242',
+    url: 'https://drive.google.com/file/d/1xvUkubNE7QpcOktHHfJYvsh21JVmNCTc/view?usp=drive_link',
+    poster: 'bleach'
+  },
+  {
+    id: 9,
+    name: 'The Calamity E3',
+    subtitle: 'Bleach: Thousand-Year Blood War',
+    type: 'anime',
+    accent: '#c92d3c',
+    url: 'https://drive.google.com/file/d/1WimtDKUfVRWDa0_7fhOHxtsjP61zVaCo/view?usp=drive_link',
+    poster: 'bleach'
+  },
+  {
+    id: 10,
+    name: 'The Calamity E4',
+    subtitle: 'Bleach: Thousand-Year Blood War',
+    type: 'anime',
+    accent: '#bb2e3c',
+    url: 'https://drive.google.com/file/d/1gFzRxfCRkECO0gpXpcLly11rPJuL-V4Y/view?usp=drive_link',
+    poster: 'bleach'
+  },
+  {
+    id: 11,
+    name: 'The Calamity E5',
+    subtitle: 'Bleach: Thousand-Year Blood War',
+    type: 'anime',
+    accent: '#ab2e3c',
+    url: 'https://drive.google.com/file/d/1dT6SJrhlC18pqlO79BsNYYH3t_4p7TqX/view?usp=drive_link',
+    poster: 'bleach'
+  },
+  {
+    id: 12,
+    name: 'The Calamity E6',
+    subtitle: 'Bleach: Thousand-Year Blood War',
+    type: 'anime',
+    accent: '#9e2939',
+    url: 'https://drive.google.com/file/d/1J8EZeB2xr0MNordJSARw38tWrokrZgOm/view?usp=drive_link',
+    poster: 'bleach'
+  },
+  {
+    id: 13,
+    name: 'The Calamity E7',
+    subtitle: 'Bleach: Thousand-Year Blood War',
+    type: 'anime',
+    accent: '#922537',
+    url: 'https://drive.google.com/file/d/14FM0PJQjIHgiYfsO-sjA851Rt-V99QuK/view?usp=drive_link',
+    poster: 'bleach'
+  },
+  {
+    id: 14,
+    name: 'The Calamity E8',
+    subtitle: 'Bleach: Thousand-Year Blood War',
+    type: 'anime',
+    accent: '#852334',
+    url: 'https://drive.google.com/file/d/1HNclAhv3xQoota61O_K-Ws0OqP40Oj7h/view?usp=drive_link',
+    poster: 'bleach'
+  },
+  {
+    id: 15,
+    name: 'The Calamity E9',
+    subtitle: 'Bleach: Thousand-Year Blood War',
+    type: 'anime',
+    accent: '#772132',
+    url: 'https://drive.google.com/file/d/1qdWr5u_bNbFYFgzyU57zByS7bG-tFfxY/view?usp=drive_link',
+    poster: 'bleach'
+  },
+  {
+    id: 16,
+    name: 'The Calamity E10',
+    subtitle: 'Bleach: Thousand-Year Blood War',
+    type: 'anime',
+    accent: '#6b1f2e',
+    url: 'https://drive.google.com/file/d/1ct4J5nWt1-SOON7UlBFhbGPVPVPnO-rQ/view?usp=sharing',
+    poster: 'bleach'
   }
 ];
 
+const FEATURED_EPISODE_ID = 7;
 const episodesGrid = document.getElementById('episodesGrid');
 const playerPlaylist = document.getElementById('playerPlaylist');
 const videoPlayer = document.getElementById('videoPlayer');
@@ -112,7 +203,7 @@ if (episodesGrid) {
 
 if (playerPlaylist) {
   playerPlaylist.innerHTML = episodes.map((episode, index) => `
-    <button class="player-episode${index === 0 ? ' active' : ''}" data-episode-id="${episode.id}" type="button">
+    <button class="player-episode${episode.id === FEATURED_EPISODE_ID ? ' active' : ''}" data-episode-id="${episode.id}" type="button">
       <span class="playlist-thumb ${episode.poster}" aria-hidden="true"><span>${String(index + 1).padStart(2, '0')}</span></span>
       <span class="playlist-copy"><strong>${episode.name}</strong><small>${episode.subtitle}</small></span>
       <span class="playlist-play" aria-hidden="true">▶</span>
@@ -129,5 +220,8 @@ if (episodeCount) episodeCount.textContent = `${episodes.length} total`;
 
 const watchButton = document.getElementById('watchButton');
 if (watchButton) {
-  watchButton.addEventListener('click', () => selectEpisode(episodes[0]));
+  watchButton.addEventListener('click', () => {
+    const featuredEpisode = episodes.find((episode) => episode.id === FEATURED_EPISODE_ID);
+    selectEpisode(featuredEpisode);
+  });
 }
