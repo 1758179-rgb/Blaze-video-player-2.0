@@ -56,32 +56,78 @@ const episodes = [
 ];
 
 const episodesGrid = document.getElementById('episodesGrid');
+const playerPlaylist = document.getElementById('playerPlaylist');
+const videoPlayer = document.getElementById('videoPlayer');
+const videoTitle = document.getElementById('videoTitle');
+const playerPlaceholder = document.getElementById('playerPlaceholder');
+const watchSection = document.getElementById('watchSection');
+
+function getEmbedUrl(url) {
+  try {
+    const parsedUrl = new URL(url);
+    const driveFile = parsedUrl.pathname.match(/^\/file\/d\/([^/]+)/);
+    if (parsedUrl.hostname === 'drive.google.com' && driveFile) {
+      return `https://drive.google.com/file/d/${driveFile[1]}/preview`;
+    }
+  } catch (error) {
+    console.warn('Invalid episode URL:', error);
+  }
+
+  return url;
+}
+
+function selectEpisode(episode, shouldScroll = true) {
+  if (!episode || !videoPlayer) return;
+
+  videoPlayer.src = getEmbedUrl(episode.url);
+  videoTitle.textContent = `${episode.subtitle} — ${episode.name}`;
+  playerPlaceholder.hidden = true;
+  watchSection.classList.add('has-selection');
+
+  document.querySelectorAll('.player-episode, .episode-card').forEach((item) => {
+    item.classList.remove('active');
+    if (Number(item.dataset.episodeId) === episode.id) {
+      item.classList.add('active');
+    }
+  });
+
+  if (shouldScroll) {
+    watchSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
 
 if (episodesGrid) {
   episodesGrid.innerHTML = episodes.map((episode, index) => `
-    <button class="episode-card ${episode.poster}" data-url="${episode.url}" type="button" aria-label="Open ${episode.name}">
+    <button class="episode-card ${episode.poster}" data-episode-id="${episode.id}" type="button" aria-label="Play ${episode.name}">
       <span class="index">${String(index + 1).padStart(2, '0')}</span>
       <span class="card-art" style="--card-accent: ${episode.accent};"></span>
       <span class="card-title">${episode.name}</span>
     </button>
   `).join('');
 
-  episodesGrid.querySelectorAll('.episode-card').forEach((card) => {
-    card.addEventListener('click', () => {
-      const url = card.dataset.url;
-      if (url) {
-        window.open(url, '_blank', 'noopener,noreferrer');
-      }
-    });
+  episodesGrid.querySelectorAll('.episode-card').forEach((card, index) => {
+    card.addEventListener('click', () => selectEpisode(episodes[index]));
   });
 }
 
+if (playerPlaylist) {
+  playerPlaylist.innerHTML = episodes.map((episode, index) => `
+    <button class="player-episode${index === 0 ? ' active' : ''}" data-episode-id="${episode.id}" type="button">
+      <span class="playlist-thumb ${episode.poster}" aria-hidden="true"><span>${String(index + 1).padStart(2, '0')}</span></span>
+      <span class="playlist-copy"><strong>${episode.name}</strong><small>${episode.subtitle}</small></span>
+      <span class="playlist-play" aria-hidden="true">▶</span>
+    </button>
+  `).join('');
+
+  playerPlaylist.querySelectorAll('.player-episode').forEach((item, index) => {
+    item.addEventListener('click', () => selectEpisode(episodes[index], false));
+  });
+}
+
+const episodeCount = document.getElementById('episodeCount');
+if (episodeCount) episodeCount.textContent = `${episodes.length} total`;
+
 const watchButton = document.getElementById('watchButton');
 if (watchButton) {
-  watchButton.addEventListener('click', () => {
-    const firstEpisode = episodes[0];
-    if (firstEpisode) {
-      window.open(firstEpisode.url, '_blank', 'noopener,noreferrer');
-    }
-  });
+  watchButton.addEventListener('click', () => selectEpisode(episodes[0]));
 }
