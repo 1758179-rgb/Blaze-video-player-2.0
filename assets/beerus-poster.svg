@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Dragon Ball Super Beerus poster">
+  <defs>
+    <linearGradient id="spaceBack" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#120b1c"/>
+      <stop offset="26%" stop-color="#240d2f"/>
+      <stop offset="100%" stop-color="#070c16"/>
+    </linearGradient>
+    <radialGradient id="planetGlow" cx="50%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#4fc4ff"/>
+      <stop offset="34%" stop-color="#3f5af2"/>
+      <stop offset="66%" stop-color="#221640"/>
+      <stop offset="100%" stop-color="#080a12"/>
+    </radialGradient>
+    <radialGradient id="energyAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff71d9" stop-opacity="0.96"/>
+      <stop offset="40%" stop-color="#ff71d9" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ff71d9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="900" height="1200" fill="url(#spaceBack)"/>
+  <circle cx="444" cy="402" r="205" fill="url(#planetGlow)" opacity="0.9"/>
+  <circle cx="444" cy="402" r="92" fill="#1b2d59" opacity="0.9"/>
+  <circle cx="444" cy="360" r="128" fill="none" stroke="#8fe7ff" stroke-width="10" opacity="0.7"/>
+  <circle cx="450" cy="350" r="260" fill="url(#energyAura)"/>
+
+  <g opacity="0.9">
+    <path d="M260 710C318 670 368 648 430 648C482 647 532 666 585 714L630 1042H232Z" fill="#090d17"/>
+    <path d="M310 640L370 560L430 624L450 718L380 780Z" fill="#0b1320"/>
+    <path d="M570 640L506 560L446 624L428 718L498 780Z" fill="#0c1220"/>
+    <path d="M438 402C497 402 544 436 533 508C517 598 472 646 440 692C405 645 360 596 345 509C332 439 381 402 438 402Z" fill="#0a0e14"/>
+    <path d="M320 635C363 680 395 700 440 700C485 700 521 680 562 635L607 1062H279Z" fill="#070b12"/>
+  </g>
+
+  <g opacity="0.82">
+    <path d="M212 706L126 828L174 864L266 760Z" fill="#0a0d18"/>
+    <path d="M684 706L770 828L722 864L630 760Z" fill="#0a0d18"/>
+  </g>
+
+  <g opacity="0.7">
+    <circle cx="174" cy="212" r="10" fill="#f3d7ff"/>
+    <circle cx="702" cy="236" r="13" fill="#cedbff"/>
+    <circle cx="612" cy="468" r="9" fill="#ffd7f7"/>
+    <circle cx="186" cy="512" r="11" fill="#a9d8ff"/>
+    <circle cx="738" cy="578" r="12" fill="#ffd7f7"/>
+  </g>
+
+  <g fill="none" stroke="#8fe7ff" stroke-width="12" opacity="0.8">
+    <path d="M112 756C194 683 252 668 332 706"/>
+    <path d="M786 756C703 683 646 668 565 706"/>
+  </g>
+
+  <g fill="#f2f2f2" font-family="Arial, Helvetica, sans-serif">
+    <text x="450" y="965" text-anchor="middle" font-size="60" font-weight="900" letter-spacing="4">DRAGON BALL</text>
+    <text x="450" y="1054" text-anchor="middle" font-size="84" font-weight="900" letter-spacing="3">SUPER</text>
+  </g>
+
+  <g fill="#ff69d3" font-family="Arial, Helvetica, sans-serif" font-weight="900">
+    <text x="450" y="120" text-anchor="middle" font-size="74" letter-spacing="8">BEERUS</text>
+  </g>
+</svg>
