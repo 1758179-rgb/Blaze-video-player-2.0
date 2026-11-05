@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Black Clover Season 2 poster">
+  <defs>
+    <radialGradient id="bgGlow" cx="35%" cy="28%" r="46%">
+      <stop offset="0%" stop-color="#ffbda1" stop-opacity="0.95"/>
+      <stop offset="25%" stop-color="#ff7d62" stop-opacity="0.72"/>
+      <stop offset="62%" stop-color="#1a1019" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#060b12" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#170d12"/>
+      <stop offset="35%" stop-color="#0d121b"/>
+      <stop offset="100%" stop-color="#04070d"/>
+    </linearGradient>
+    <linearGradient id="redBlade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff7f6e"/>
+      <stop offset="100%" stop-color="#d6101d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="1200" fill="url(#bgGrad)"/>
+  <circle cx="250" cy="260" r="270" fill="url(#bgGlow)"/>
+
+  <g opacity="0.88">
+    <path d="M150 1035L325 470L392 555L330 1140Z" fill="#05090f"/>
+    <path d="M752 1035L566 470L495 553L565 1140Z" fill="#0b1015"/>
+    <path d="M330 635L415 555L470 620L450 1030H324Z" fill="#090d12"/>
+    <path d="M250 605L160 790L205 830L318 695Z" fill="#0f1a22"/>
+    <path d="M650 605L740 790L695 830L582 695Z" fill="#0f1a22"/>
+    <path d="M420 170L476 275L438 530H358L328 270Z" fill="#090d12"/>
+    <path d="M415 235L285 410L308 520L417 465L462 370L560 515L590 405L472 238Z" fill="#0c1017"/>
+    <path d="M420 245L650 320L706 392L648 467L456 390Z" fill="#0a1018"/>
+    <path d="M420 245L178 320L118 392L180 467L370 390Z" fill="#0a1018"/>
+  </g>
+
+  <g fill="none" stroke="url(#redBlade)" stroke-width="12" opacity="0.9">
+    <path d="M296 760C340 720 380 695 417 695C455 695 492 720 538 760"/>
+    <path d="M278 910C335 872 385 861 420 865C455 869 508 883 590 918"/>
+  </g>
+
+  <g fill="#ff5b61" opacity="0.9">
+    <path d="M407 485L370 680L399 788L450 680L462 484Z"/>
+    <path d="M350 510L280 611L311 674L392 617L407 514Z"/>
+    <path d="M463 510L536 611L503 674L421 617L407 514Z"/>
+  </g>
+
+  <g fill="#0a0d12" opacity="0.95">
+    <path d="M355 508L318 610L338 710L392 687L407 515Z"/>
+    <path d="M464 508L502 610L482 710L427 687L407 515Z"/>
+  </g>
+
+  <g fill="#f6e6ea" opacity="0.18">
+    <path d="M364 492C383 480 398 477 421 480C432 539 420 603 409 646C384 642 367 632 349 616C333 598 328 558 364 492Z"/>
+    <path d="M470 492C453 484 438 478 418 480C407 541 417 607 429 646C455 642 472 631 491 614C508 597 512 558 470 492Z"/>
+  </g>
+
+  <g fill="#111721" opacity="0.9">
+    <path d="M188 1055L334 540L380 586L328 1060Z"/>
+    <path d="M712 1055L566 540L520 586L572 1060Z"/>
+  </g>
+
+  <g fill="#ffffff" font-family="Arial, Helvetica, sans-serif">
+    <text x="450" y="1030" text-anchor="middle" font-size="86" font-weight="900" letter-spacing="5">BLACK</text>
+    <text x="450" y="1114" text-anchor="middle" font-size="100" font-weight="900" letter-spacing="2">CLOVER</text>
+  </g>
+
+  <g fill="#ff5b61" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    <text x="450" y="90" text-anchor="middle" font-size="34" letter-spacing="12">SEASON 2</text>
+  </g>
+</svg>
