@@ -4,19 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blaze's video player 2.0</title>
-    <meta
-      name="description"
-      content="Blaze's video player 2.0 - a streaming interface inspired by anime content sites."
-    />
+    <meta name="description" content="Browse anime series and watch episodes in an embedded player." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://upload.wikimedia.org" />
+    <link rel="preconnect" href="https://beam-images.warnermediacdn.com" />
+    <link rel="preconnect" href="https://encrypted-tbn0.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="player.css" />
-    <link rel="stylesheet" href="bleach.css" />
+    <link rel="stylesheet" href="catalog.css" />
   </head>
   <body>
     <div class="page-shell">
@@ -25,102 +23,64 @@
           <div class="brand-icon">B</div>
           <div class="brand-text">Blaze's video player <span>2.0</span></div>
         </div>
-
-        <div class="top-search" aria-label="Search">
-          <span class="search-icon">⌕</span>
-        </div>
-
         <nav class="main-nav" aria-label="Main navigation">
-          <a href="#">Home</a>
-          <a href="#episodesGrid">Anime</a>
-          <a href="#episodesGrid">Movies</a>
-          <a href="#episodesGrid">New</a>
-          <a href="#episodesGrid">Community</a>
+          <a href="#home">Home</a>
+          <a href="#series">Anime</a>
         </nav>
-
-        <button class="login-btn" type="button">Login</button>
+        <a class="login-btn" href="#series">Browse Series</a>
       </header>
 
-      <main class="hero bleach-featured">
+      <main id="home" class="hero bleach-featured">
         <div class="hero-content">
           <p class="eyebrow">FEATURED SERIES</p>
           <h1>Bleach: Thousand-Year Blood War — The Calamity</h1>
-
           <div class="meta-row" aria-label="Series metadata">
-            <span class="meta-pill">TV</span>
-            <span>●</span>
-            <span>Anime</span>
-            <span>●</span>
-            <span>Season</span>
-            <span>●</span>
-            <span>10 Episodes</span>
+            <span class="meta-pill">TV</span><span>●</span><span>Anime</span><span>●</span><span>10 Episodes</span>
           </div>
-
-          <p class="description">
-            The Thousand-Year Blood War continues. Watch The Calamity episodes in the player below.
-          </p>
-
+          <p class="description">The Thousand-Year Blood War continues. Choose the series to see its episodes, or start episode one now.</p>
           <div class="cta-row">
             <button id="watchButton" class="primary-btn" type="button">Watch Episode 1</button>
-            <button class="secondary-btn" type="button" onclick="document.getElementById('episodesGrid').scrollIntoView({ behavior: 'smooth' })">Browse Episodes</button>
+            <a class="secondary-btn" href="#series">Browse Series</a>
           </div>
         </div>
-
-        <div class="hero-art" aria-hidden="true">
-          <div class="art-sheen"></div>
-          <div class="art-mask"></div>
-          <div class="art-figure"></div>
-          <div class="art-title">BLEACH</div>
-        </div>
-
-        <button class="nav-arrow left" type="button" aria-label="Previous">‹</button>
-        <button class="nav-arrow right" type="button" aria-label="Next">›</button>
+        <div class="hero-art" aria-hidden="true"><div class="art-figure"></div></div>
       </main>
 
-      <section id="watchSection" class="watch-section" aria-label="Episode player">
+      <section id="series" class="catalog-section" aria-labelledby="seriesHeading">
+        <div class="section-header">
+          <div><p class="section-kicker">PICK A SHOW</p><h2 id="seriesHeading">Anime Series</h2></div>
+          <p class="section-note">Select a series to see its episode list.</p>
+        </div>
+        <div id="seriesGrid" class="series-grid"></div>
+      </section>
+
+      <section id="watchSection" class="watch-section" aria-label="Episode player" hidden>
         <div class="watch-heading">
           <div>
-            <p class="watch-kicker">NOW PLAYING</p>
-            <h2 id="videoTitle">Choose an episode to start watching</h2>
+            <p class="watch-kicker" id="watchSeriesSubtitle">SERIES</p>
+            <h2 id="watchSeriesTitle">Choose a series</h2>
           </div>
           <span class="player-quality">PLAYER</span>
         </div>
-
         <div class="watch-layout">
           <div class="player-main">
             <div class="video-wrapper">
-              <iframe
-                id="videoPlayer"
-                src="about:blank"
-                title="Episode video player"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowfullscreen
-                referrerpolicy="strict-origin-when-cross-origin"
-              ></iframe>
+              <iframe id="videoPlayer" src="about:blank" title="Episode video player" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
               <div id="playerPlaceholder" class="player-placeholder">
                 <span class="play-mark" aria-hidden="true">▶</span>
                 <p>Select an episode from the list to play it here.</p>
               </div>
             </div>
-            <p class="player-hint">If playback is unavailable, check that the video is shared for viewing and supports embedded playback.</p>
+            <h3 id="videoTitle" class="video-title">Select an episode to start watching</h3>
+            <p class="player-hint">Playback depends on the video host's sharing and embed settings.</p>
           </div>
-
-          <aside class="player-playlist" aria-label="Episode playlist">
+          <aside class="player-playlist" aria-label="Episodes in selected series">
             <h3>Episodes <span id="episodeCount"></span></h3>
-            <div id="playerPlaylist" class="player-playlist-items"></div>
+            <div id="episodeList" class="player-playlist-items"></div>
           </aside>
         </div>
       </section>
-
-      <section class="trending" aria-label="Trending anime list">
-        <div class="section-header">
-          <h2>Episodes &amp; Series</h2>
-        </div>
-
-        <div id="episodesGrid" class="episodes-grid"></div>
-      </section>
     </div>
-
     <script src="app.js"></script>
   </body>
 </html>
