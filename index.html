@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="player.css" />
   </head>
   <body>
     <div class="page-shell">
@@ -30,10 +31,10 @@
 
         <nav class="main-nav" aria-label="Main navigation">
           <a href="#">Home</a>
-          <a href="#">Anime</a>
-          <a href="#">Movies</a>
-          <a href="#">New</a>
-          <a href="#">Community</a>
+          <a href="#episodesGrid">Anime</a>
+          <a href="#episodesGrid">Movies</a>
+          <a href="#episodesGrid">New</a>
+          <a href="#episodesGrid">Community</a>
         </nav>
 
         <button class="login-btn" type="button">Login</button>
@@ -62,7 +63,7 @@
 
           <div class="cta-row">
             <button id="watchButton" class="primary-btn" type="button">Watch Now</button>
-            <button class="secondary-btn" type="button">Detail</button>
+            <button class="secondary-btn" type="button" onclick="document.getElementById('episodesGrid').scrollIntoView({ behavior: 'smooth' })">Browse Episodes</button>
           </div>
         </div>
 
@@ -76,6 +77,41 @@
         <button class="nav-arrow left" type="button" aria-label="Previous">›</button>
         <button class="nav-arrow right" type="button" aria-label="Next">›</button>
       </main>
+
+      <section id="watchSection" class="watch-section" aria-label="Episode player">
+        <div class="watch-heading">
+          <div>
+            <p class="watch-kicker">NOW PLAYING</p>
+            <h2 id="videoTitle">Choose an episode to start watching</h2>
+          </div>
+          <span class="player-quality">PLAYER</span>
+        </div>
+
+        <div class="watch-layout">
+          <div class="player-main">
+            <div class="video-wrapper">
+              <iframe
+                id="videoPlayer"
+                src="about:blank"
+                title="Episode video player"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+              <div id="playerPlaceholder" class="player-placeholder">
+                <span class="play-mark" aria-hidden="true">▶</span>
+                <p>Select an episode from the list to play it here.</p>
+              </div>
+            </div>
+            <p class="player-hint">If playback is unavailable, check that the video is shared for viewing and supports embedded playback.</p>
+          </div>
+
+          <aside class="player-playlist" aria-label="Episode playlist">
+            <h3>Episodes <span id="episodeCount"></span></h3>
+            <div id="playerPlaylist" class="player-playlist-items"></div>
+          </aside>
+        </div>
+      </section>
 
       <section class="trending" aria-label="Trending anime list">
         <div class="section-header">
