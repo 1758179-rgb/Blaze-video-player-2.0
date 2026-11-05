@@ -182,21 +182,30 @@
   border-radius: 6px;
   background-position: center 26%;
   background-size: cover;
+  background-color: #251521;
 }
 
 .playlist-thumb::after {
   position: absolute;
   inset: 0;
   content: "";
-  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.62));
+  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.48));
 }
 
 .playlist-thumb.black-clover {
-  background-image: url('./assets/black-clover-poster.svg');
+  background-image:
+    linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.3)),
+    url("https://upload.wikimedia.org/wikipedia/en/4/4c/Black_Clover_S2_KV.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original");
+  background-position: center 25%;
+  background-repeat: no-repeat;
 }
 
 .playlist-thumb.beerus {
-  background-image: url('./assets/beerus-poster.svg');
+  background-image:
+    linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.3)),
+    url("https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/864246bb-622c-4cf4-88e0-768da2d81f62/3fbc8c12-2387-49fe-8299-7b1234934934.jpeg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=1024&w=1024");
+  background-position: center 25%;
+  background-repeat: no-repeat;
 }
 
 .playlist-thumb span {
