@@ -76,7 +76,22 @@ const series = [
   }
 ];
 
+const movies = [
+  {
+    id: 'avengers-endgame',
+    title: 'Avengers: Endgame',
+    subtitle: 'Marvel',
+    poster: 'avengers-endgame',
+    image: 'https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
+    accent: '#ffb347',
+    episodes: [
+      { id: 1, title: 'Movie', url: 'https://drive.google.com/file/d/1uyP_Vp1w_5hN-azXbGmaX07bQcyCLLJT/view?usp=sharing' }
+    ]
+  }
+];
+
 const seriesGrid = document.getElementById('seriesGrid');
+const movieGrid = document.getElementById('movieGrid');
 const watchSection = document.getElementById('watchSection');
 const watchSeriesTitle = document.getElementById('watchSeriesTitle');
 const watchSeriesSubtitle = document.getElementById('watchSeriesSubtitle');
@@ -85,6 +100,7 @@ const videoPlayer = document.getElementById('videoPlayer');
 const playerPlaceholder = document.getElementById('playerPlaceholder');
 const episodeList = document.getElementById('episodeList');
 const episodeCount = document.getElementById('episodeCount');
+const themeButtons = document.querySelectorAll('.theme-button');
 let selectedSeries = null;
 
 function getEmbedUrl(url) {
@@ -100,6 +116,15 @@ function getEmbedUrl(url) {
   return url;
 }
 
+function setTheme(theme) {
+  document.body.dataset.theme = theme;
+  themeButtons.forEach((button) => {
+    const isActive = button.dataset.setTheme === theme;
+    button.setAttribute('aria-pressed', String(isActive));
+    button.classList.toggle('is-active', isActive);
+  });
+}
+
 function playEpisode(episode) {
   if (!selectedSeries || !videoPlayer) return;
   videoPlayer.src = getEmbedUrl(episode.url);
@@ -112,16 +137,16 @@ function playEpisode(episode) {
   });
 }
 
-function openSeries(show, autoplayFirst = false) {
+function openMedia(show, autoplayFirst = false, mediaType = 'series') {
   if (!show) return;
   selectedSeries = show;
   watchSection.hidden = false;
   watchSeriesTitle.textContent = show.title;
   watchSeriesSubtitle.textContent = show.subtitle;
-  videoTitle.textContent = 'Select an episode to start watching';
+  videoTitle.textContent = 'Select a title to start watching';
   videoPlayer.src = 'about:blank';
   playerPlaceholder.hidden = false;
-  episodeCount.textContent = `${show.episodes.length} episodes`;
+  episodeCount.textContent = `${show.episodes.length} ${show.episodes.length === 1 ? 'video' : 'videos'}`;
 
   episodeList.innerHTML = show.episodes.map((episode) => `
     <button class="episode-choice" type="button" data-episode-id="${episode.id}" aria-pressed="false">
@@ -136,15 +161,26 @@ function openSeries(show, autoplayFirst = false) {
   });
 
   document.querySelectorAll('.series-card').forEach((card) => {
-    card.classList.toggle('selected', card.dataset.seriesId === show.id);
+    const isSelected = card.dataset.mediaId === show.id && card.dataset.mediaType === mediaType;
+    card.classList.toggle('selected', isSelected);
   });
+
   watchSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   if (autoplayFirst && show.episodes.length) playEpisode(show.episodes[0]);
 }
 
-if (seriesGrid) {
+function openSeries(show, autoplayFirst = false) {
+  openMedia(show, autoplayFirst, 'series');
+}
+
+function openMovie(movie, autoplayFirst = false) {
+  openMedia(movie, autoplayFirst, 'movie');
+}
+
+function renderSeriesGrid() {
+  if (!seriesGrid) return;
   seriesGrid.innerHTML = series.map((show) => `
-    <button class="series-card" type="button" data-series-id="${show.id}" aria-label="Open ${show.title}">
+    <button class="series-card" type="button" data-media-id="${show.id}" data-media-type="series" aria-label="Open ${show.title}">
       <span class="series-poster ${show.poster}" style="--series-accent: ${show.accent}; background-image: linear-gradient(180deg, transparent 40%, rgba(5, 5, 10, .88)), url('${show.image}')"></span>
       <span class="series-card-info">
         <strong>${show.title}</strong>
@@ -155,10 +191,40 @@ if (seriesGrid) {
 
   seriesGrid.querySelectorAll('.series-card').forEach((card) => {
     card.addEventListener('click', () => {
-      const show = series.find((item) => item.id === card.dataset.seriesId);
+      const show = series.find((item) => item.id === card.dataset.mediaId);
       openSeries(show);
     });
   });
+}
+
+function renderMovieGrid() {
+  if (!movieGrid) return;
+  movieGrid.innerHTML = movies.map((movie) => `
+    <button class="series-card" type="button" data-media-id="${movie.id}" data-media-type="movie" aria-label="Open ${movie.title}">
+      <span class="series-poster ${movie.poster}" style="--series-accent: ${movie.accent}; background-image: linear-gradient(180deg, transparent 40%, rgba(5, 5, 10, .88)), url('${movie.image}')"></span>
+      <span class="series-card-info">
+        <strong>${movie.title}</strong>
+        <small>${movie.episodes.length} video · ${movie.subtitle}</small>
+      </span>
+    </button>
+  `).join('');
+
+  movieGrid.querySelectorAll('.series-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      const movie = movies.find((item) => item.id === card.dataset.mediaId);
+      openMovie(movie);
+    });
+  });
+}
+
+if (seriesGrid) renderSeriesGrid();
+if (movieGrid) renderMovieGrid();
+
+if (themeButtons.length) {
+  themeButtons.forEach((button) => {
+    button.addEventListener('click', () => setTheme(button.dataset.setTheme));
+  });
+  setTheme('bleach');
 }
 
 const watchButton = document.getElementById('watchButton');
