@@ -60,6 +60,19 @@ const series = [
     episodes: [
       { id: 1, title: 'Episode 1', url: 'https://drive.google.com/file/d/1GODHTM9LjpjV0zLwwOorWyP7J_Hy_RGi/view?usp=sharing' }
     ]
+  },
+  {
+    id: 'one-piece',
+    title: 'One Piece',
+    subtitle: 'One Piece',
+    poster: 'one-piece',
+    image: 'https://thumb.wikimedia.org/wikipedia/en/thumb/e/e0/The_One_Piece_Poster.jpg/250px-The_One_Piece_Poster.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail',
+    accent: '#ffb347',
+    episodes: [
+      { id: 1, title: 'Episode 1', url: 'https://drive.google.com/file/d/1nXVtO74rApHVjFYGUGUrZlJqCKdkaxX_/view?usp=sharing' },
+      { id: 2, title: 'Episode 2', url: 'https://drive.google.com/file/d/1jhOop3MeGLjQBvaDhIpvRIFDootR2ALL/view?usp=sharing' },
+      { id: 3, title: 'Episode 3', url: 'https://drive.google.com/file/d/10DdRpplngL8B9irrfIPPXmO7cmkohuc_/view?usp=sharing' }
+    ]
   }
 ];
 
