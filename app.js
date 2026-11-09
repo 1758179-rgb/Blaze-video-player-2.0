@@ -4,7 +4,7 @@ const series = [
     title: 'Bleach: Thousand-Year Blood War — The Calamity',
     subtitle: 'Bleach: Thousand-Year Blood War',
     poster: 'bleach',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjVwbN6jMNK0bc-rCyZuRwAbN46HVlx9AfnqFyMkmp4EKGByAMrH50RpY:https://cdnwebsite.japan-expo.com/website/website/event_picture/000000010157&s=10',
+    image: 'https://cdnwebsite.japan-expo.com/website/website/event_picture/000000010157&s=10',
     accent: '#e33b4b',
     episodes: [
       { id: 1, title: 'Episode 1', url: 'https://drive.google.com/file/d/16WKuep15ZwUTpCIZVM0A0hHvHuIbn7to/view?usp=drive_link' },
@@ -30,7 +30,8 @@ const series = [
       { id: 1, title: 'Episode 1', url: 'https://drive.google.com/file/d/15bFhLPi8F_oe8aC0EGN3X0MhWChnEIav/view?usp=sharing' },
       { id: 2, title: 'Episode 2', url: 'https://drive.google.com/file/d/1xvUkubNE7QpcOktHHfJYvsh21JVmNCTc/view?usp=sharing' },
       { id: 3, title: 'Episode 3', url: 'https://drive.google.com/file/d/1WimtDKUfVRWDa0_7fhOHxtsjP61zVaCo/view?usp=sharing' },
-      { id: 4, title: 'Episode 4', url: 'https://drive.google.com/file/d/11-5YYpfisAFmiLGzJGIecdbx1NYeH9eV/view?usp=sharing' }
+      { id: 4, title: 'Episode 4', url: 'https://drive.google.com/file/d/11-5YYpfisAFmiLGzJGIecdbx1NYeH9eV/view?usp=sharing' },
+      { id: 6, title: 'Episode 6', url: 'https://drive.google.com/file/d/1NfPfueXwxQZB7TEI03kv404TBmuf-GhP/view?usp=sharing' }
     ]
   },
   {
@@ -38,11 +39,14 @@ const series = [
     title: 'Dragon Ball Super: Beerus',
     subtitle: 'Dragon Ball Super',
     poster: 'beerus',
-    image: 'https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/864246bb-622c-4cf4-88e0-768da2d81f62/3fbc8c12-2387-49fe-8299-7b1234934934.jpeg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=1024&w=1024',
+    image: 'https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/864246bb-622c-4cf4-88e0-768da2d81f62/3fbc8c12-2387-49fe-8299-7b1234934934.jpeg?host=wbd-images.prod-vod.h264.io&partner=beamcom&w=1024',
     accent: '#38c7ff',
     episodes: [
       { id: 1, title: 'Episode 1', url: 'https://drive.google.com/file/d/1ZOUd_BnEIPz2AbjmYU7E9iFam_jvzf5j/view?usp=sharing' },
-      { id: 2, title: 'Episode 2', url: 'https://drive.google.com/file/d/1_2IRqyvqfWzmb7nB9O6nIhCvk9k0OQhA/view?usp=sharing' }
+      { id: 2, title: 'Episode 2', url: 'https://drive.google.com/file/d/1_2IRqyvqfWzmb7nB9O6nIhCvk9k0OQhA/view?usp=sharing' },
+      { id: 3, title: 'Episode 3', url: 'https://drive.google.com/file/d/1rnugslPR7Skc4u29AHXhPUFiMXqprN_T/view?usp=sharing' },
+      { id: 4, title: 'Episode 4', url: 'https://drive.google.com/file/d/1zJpnsQa4U7RDvyB5KeTdxOFiTJ0MLMlf/view?usp=sharing' },
+      { id: 5, title: 'Episode 5', url: 'https://drive.google.com/file/d/109YrO4fQCT4Rkqn4SwDAZYq37LmpbTuz/view?usp=drive_link' }
     ]
   }
 ];
@@ -84,6 +88,7 @@ function playEpisode(episode) {
 }
 
 function openSeries(show, autoplayFirst = false) {
+  if (!show) return;
   selectedSeries = show;
   watchSection.hidden = false;
   watchSeriesTitle.textContent = show.title;
@@ -93,9 +98,9 @@ function openSeries(show, autoplayFirst = false) {
   playerPlaceholder.hidden = false;
   episodeCount.textContent = `${show.episodes.length} episodes`;
 
-  episodeList.innerHTML = show.episodes.map((episode, index) => `
+  episodeList.innerHTML = show.episodes.map((episode) => `
     <button class="episode-choice" type="button" data-episode-id="${episode.id}" aria-pressed="false">
-      <span class="episode-number">${String(index + 1).padStart(2, '0')}</span>
+      <span class="episode-number">${String(episode.id).padStart(2, '0')}</span>
       <span class="episode-choice-title">${episode.title}</span>
       <span class="episode-choice-play" aria-hidden="true">▶</span>
     </button>
