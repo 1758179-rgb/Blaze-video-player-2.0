@@ -4,7 +4,7 @@ const series = [
     title: 'Bleach: Thousand-Year Blood War — The Calamity',
     subtitle: 'Bleach: Thousand-Year Blood War',
     poster: 'bleach',
-    image: 'https://cdnwebsite.japan-expo.com/website/website/event_picture/000000010157&s=10',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjVwbN6jMNK0bc-rCyZuRwAbN46HVlx9AfnqFyMkmp4EKGByAMrH50RpY:https://cdnwebsite.japan-expo.com/website/website/event_picture/000000010157&s=10',
     accent: '#e33b4b',
     episodes: [
       { id: 1, title: 'Episode 1', url: 'https://drive.google.com/file/d/16WKuep15ZwUTpCIZVM0A0hHvHuIbn7to/view?usp=drive_link' },
@@ -31,6 +31,7 @@ const series = [
       { id: 2, title: 'Episode 2', url: 'https://drive.google.com/file/d/1xvUkubNE7QpcOktHHfJYvsh21JVmNCTc/view?usp=sharing' },
       { id: 3, title: 'Episode 3', url: 'https://drive.google.com/file/d/1WimtDKUfVRWDa0_7fhOHxtsjP61zVaCo/view?usp=sharing' },
       { id: 4, title: 'Episode 4', url: 'https://drive.google.com/file/d/11-5YYpfisAFmiLGzJGIecdbx1NYeH9eV/view?usp=sharing' },
+      { id: 5, title: 'Episode 5', url: 'https://drive.google.com/file/d/1pzV3cPkieRTss3sVGSLSIi2QXC-zeEm7/view?usp=sharing' },
       { id: 6, title: 'Episode 6', url: 'https://drive.google.com/file/d/1NfPfueXwxQZB7TEI03kv404TBmuf-GhP/view?usp=sharing' }
     ]
   },
@@ -47,6 +48,17 @@ const series = [
       { id: 3, title: 'Episode 3', url: 'https://drive.google.com/file/d/1rnugslPR7Skc4u29AHXhPUFiMXqprN_T/view?usp=sharing' },
       { id: 4, title: 'Episode 4', url: 'https://drive.google.com/file/d/1zJpnsQa4U7RDvyB5KeTdxOFiTJ0MLMlf/view?usp=sharing' },
       { id: 5, title: 'Episode 5', url: 'https://drive.google.com/file/d/109YrO4fQCT4Rkqn4SwDAZYq37LmpbTuz/view?usp=drive_link' }
+    ]
+  },
+  {
+    id: 'jujutsu-kaisen-season-3',
+    title: 'Jujutsu Kaisen Season 3',
+    subtitle: 'Jujutsu Kaisen',
+    poster: 'jujutsu-kaisen',
+    image: 'https://s.yimg.com/lo/mysterio/api/cac10be6bb88ab28fb005ad1c6c00a30356376aa9a9a345766257757e9203877/lightyear_networkapi/resizefill_w960%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgamesradar_237%2Fec299e89b1cdabecac566efb79252cde',
+    accent: '#8b66ff',
+    episodes: [
+      { id: 1, title: 'Episode 1', url: 'https://drive.google.com/file/d/1GODHTM9LjpjV0zLwwOorWyP7J_Hy_RGi/view?usp=sharing' }
     ]
   }
 ];
