@@ -1,127 +1,64 @@
-/* Seasonal themes and finishing polish. */
-.theme-switch {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
+/* Seasonal themes, theme switcher, and falling-particle polish. */
+.theme-switch { display: flex; align-items: center; gap: 8px; }
 .theme-button {
-  padding: 9px 12px;
-  border: 1px solid rgba(255, 255, 255, .16);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .07);
-  color: inherit;
-  font-size: .75rem;
-  font-weight: 700;
+  padding: 9px 12px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px;
+  background: rgba(255,255,255,.07); color: inherit; font-size: .75rem; font-weight: 700;
   transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
 }
-
 .theme-button:hover { transform: translateY(-2px); }
-.theme-button[aria-pressed="true"] {
-  background: linear-gradient(120deg, #ff73bb, #b95dff);
-  box-shadow: 0 5px 18px rgba(238, 80, 177, .28);
-}
-
+.theme-button[aria-pressed="true"] { background: linear-gradient(120deg,#ff73bb,#b95dff); box-shadow: 0 5px 18px rgba(238,80,177,.28); }
 .brand-wrap { color: inherit; text-decoration: none; }
 .catalog-section { animation: rise-in .55s both; }
 .series-card { cursor: pointer; }
 .series-poster { transition: filter .25s ease, transform .35s ease; }
 .series-card:hover .series-poster { filter: saturate(1.15) brightness(1.08); }
 
-/* Pink Bleach look */
-body[data-theme="bleach"] {
-  background: radial-gradient(ellipse at 75% 15%, #64244e 0, #1a1025 40%, #0c0915 78%);
-}
+/* Pink Bleach look with falling sakura petals. */
+body[data-theme="bleach"] { background: radial-gradient(ellipse at 75% 15%,#64244e 0,#1a1025 40%,#0c0915 78%); }
 body[data-theme="bleach"] .hero {
-  background-image:
-    linear-gradient(90deg, rgba(20, 7, 23, .95) 0%, rgba(35, 10, 36, .72) 43%, rgba(20, 9, 25, .18) 100%),
+  background-image: linear-gradient(90deg,rgba(20,7,23,.95),rgba(35,10,36,.72) 43%,rgba(20,9,25,.18)),
     url("https://wallpapers-clan.com/wp-content/uploads/2025/06/bleach-ichigo-kurosaki-shinigami-hoodie-desktop-wallpaper-preview.jpg");
-  background-position: center, center 35%;
-  background-size: cover;
+  background-position: center, center 35%; background-size: cover;
 }
-body[data-theme="bleach"] .theme-button[data-set-theme="bleach"][aria-pressed="true"] {
-  background: linear-gradient(120deg, #ff6eb5, #e34891);
+body[data-theme="bleach"] .theme-button[data-set-theme="bleach"][aria-pressed="true"] { background: linear-gradient(120deg,#ff6eb5,#e34891); }
+body[data-theme="bleach"]::after {
+  content: ""; position: fixed; z-index: 20; inset: -120px 0 0; pointer-events: none; opacity: .62;
+  background-image:
+    radial-gradient(ellipse 5px 3px at 40px 50px,rgba(255,190,224,.95) 0 65%,transparent 72%),
+    radial-gradient(ellipse 4px 3px at 140px 150px,rgba(255,225,239,.9) 0 65%,transparent 72%),
+    radial-gradient(ellipse 5px 3px at 250px 90px,rgba(255,147,198,.88) 0 65%,transparent 72%),
+    radial-gradient(ellipse 4px 3px at 340px 220px,rgba(255,210,231,.9) 0 65%,transparent 72%);
+  background-size: 420px 300px; animation: petals-fall 15s linear infinite;
 }
 
-/* White Christmas look with lightweight CSS snow particles. */
-body[data-theme="christmas"] {
-  color: #172338;
-  background: linear-gradient(180deg, #f8fbff 0%, #e8f0fb 100%);
-}
+/* White Christmas look with snow particles. */
+body[data-theme="christmas"] { color: #172338; background: linear-gradient(180deg,#f8fbff 0%,#e8f0fb 100%); }
 body[data-theme="christmas"]::before {
-  content: "";
-  position: fixed;
-  z-index: 20;
-  inset: -100px 0 0;
-  pointer-events: none;
-  opacity: .8;
-  background-image:
-    radial-gradient(3px 3px at 40px 60px, #fff 98%, transparent),
-    radial-gradient(2px 2px at 120px 160px, #fff 98%, transparent),
-    radial-gradient(2.5px 2.5px at 220px 80px, #fff 98%, transparent),
-    radial-gradient(2px 2px at 320px 210px, #fff 98%, transparent),
-    radial-gradient(3px 3px at 440px 120px, #fff 98%, transparent);
-  background-size: 500px 280px;
-  animation: snowfall 12s linear infinite;
+  content: ""; position: fixed; z-index: 20; inset: -100px 0 0; pointer-events: none; opacity: .8;
+  background-image: radial-gradient(3px 3px at 40px 60px,#fff 98%,transparent),radial-gradient(2px 2px at 120px 160px,#fff 98%,transparent),radial-gradient(2.5px 2.5px at 220px 80px,#fff 98%,transparent),radial-gradient(2px 2px at 320px 210px,#fff 98%,transparent),radial-gradient(3px 3px at 440px 120px,#fff 98%,transparent);
+  background-size: 500px 280px; animation: snowfall 12s linear infinite;
 }
 body[data-theme="christmas"] .page-shell { background: transparent; }
-body[data-theme="christmas"] .topbar,
-body[data-theme="christmas"] .watch-section {
-  color: #172338;
-  border-color: rgba(62, 94, 135, .16);
-  background: rgba(255, 255, 255, .78);
-  box-shadow: 0 16px 38px rgba(57, 82, 120, .12);
-}
-body[data-theme="christmas"] .main-nav a { color: #34445c; }
-body[data-theme="christmas"] .theme-button {
-  color: #23334b;
-  border-color: rgba(43, 71, 108, .18);
-  background: rgba(255,255,255,.8);
-}
-body[data-theme="christmas"] .theme-button[data-set-theme="christmas"][aria-pressed="true"] {
-  color: white;
-  background: linear-gradient(120deg, #3d9b78, #4a78c2);
-}
-body[data-theme="christmas"] .hero {
-  background-image:
-    linear-gradient(90deg, rgba(8, 24, 46, .74), rgba(11, 33, 54, .23)),
-    url("https://img.magnific.com/free-photo/3d-tree-landscape-against-night-sky-with-santa-his-reindeers_1048-9611.jpg?semt=ais_hybrid&w=740&q=80");
-  background-position: center;
-  background-size: cover;
-}
-body[data-theme="christmas"] .hero::before { background: linear-gradient(90deg, rgba(7, 20, 40, .42), transparent 80%); }
-body[data-theme="christmas"] .catalog-section .section-header h2,
-body[data-theme="christmas"] .section-note { color: #24354d; }
-body[data-theme="christmas"] .series-card {
-  color: #19273b;
-  border-color: rgba(65, 91, 128, .15);
-  background: rgba(255,255,255,.9);
-  box-shadow: 0 12px 28px rgba(44, 67, 101, .1);
-}
-body[data-theme="christmas"] .series-card-info small { color: #64748b; }
-body[data-theme="christmas"] .player-playlist {
-  color: #1d2b40;
-  border-color: rgba(49, 76, 115, .15);
-  background: rgba(238, 244, 252, .9);
-}
-body[data-theme="christmas"] .episode-choice { color: #1d2b40; background: rgba(59, 88, 130, .07); }
-body[data-theme="christmas"] .episode-number { color: #34445c; background: rgba(57, 88, 130, .1); }
+body[data-theme="christmas"] .topbar, body[data-theme="christmas"] .watch-section { color:#172338; border-color:rgba(62,94,135,.16); background:rgba(255,255,255,.84); box-shadow:0 16px 38px rgba(57,82,120,.12); }
+body[data-theme="christmas"] .main-nav a { color:#34445c; }
+body[data-theme="christmas"] .theme-button { color:#23334b; border-color:rgba(43,71,108,.18); background:rgba(255,255,255,.8); }
+body[data-theme="christmas"] .theme-button[data-set-theme="christmas"][aria-pressed="true"] { color:white; background:linear-gradient(120deg,#3d9b78,#4a78c2); }
+body[data-theme="christmas"] .hero { background-image:linear-gradient(90deg,rgba(8,24,46,.58),rgba(11,33,54,.12)),url("https://sun9-82.vkuserphoto.ru/s/v1/ig2/ae5K_jfKdwTaCMGJeOWJWtEPVfMZHnZL8wvq12UiKFW3BNKN7Bs_fbjqiBjD5XqcNE__pXkMLfde3jdOAGt_INkp.jpg?quality=95&as=32x48,48x72,72x108,108x162,160x240,240x360,360x540,480x720,540x810,640x960,720x1080,736x1104&from=bu&cs=640x0"); background-position:center; background-size:cover; }
+body[data-theme="christmas"] .hero::before { background:linear-gradient(90deg,rgba(7,20,40,.34),transparent 80%); }
+body[data-theme="christmas"] .catalog-section .section-header h2, body[data-theme="christmas"] .section-note { color:#24354d; }
+body[data-theme="christmas"] .series-card { color:#19273b; border-color:rgba(65,91,128,.15); background:rgba(255,255,255,.92); box-shadow:0 12px 28px rgba(44,67,101,.1); }
+body[data-theme="christmas"] .series-card-info small { color:#64748b; }
+body[data-theme="christmas"] .player-playlist { color:#1d2b40; border-color:rgba(49,76,115,.15); background:rgba(238,244,252,.94); }
+body[data-theme="christmas"] .episode-choice { color:#1d2b40; background:rgba(59,88,130,.07); }
+body[data-theme="christmas"] .episode-number { color:#34445c; background:rgba(57,88,130,.1); }
 
-@keyframes snowfall {
-  from { transform: translateY(0); }
-  to { transform: translateY(280px); }
-}
-@keyframes rise-in {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* Halloween atmosphere. */
+body[data-theme="halloween"] { background:radial-gradient(ellipse at 75% 10%,#572b13 0,#191018 42%,#09070d 82%); }
+body[data-theme="halloween"] .hero { background-image:linear-gradient(90deg,rgba(12,7,15,.88),rgba(20,11,16,.48) 48%,rgba(9,7,12,.16)),url("https://img.magnific.com/premium-photo/scary-halloween-themed-illustration-background_290242-8010.jpg?semt=ais_hybrid&w=740&q=80"); background-position:center; background-size:cover; }
+body[data-theme="halloween"] .theme-button[data-set-theme="halloween"][aria-pressed="true"] { background:linear-gradient(120deg,#ff9b32,#a948e8); box-shadow:0 5px 18px rgba(255,131,38,.3); }
 
-@media (max-width: 760px) {
-  .topbar { flex-wrap: wrap; height: auto; }
-  .theme-switch { width: 100%; justify-content: flex-start; }
-  .theme-button { font-size: .7rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
-}
+@keyframes snowfall { from { transform:translateY(0); } to { transform:translateY(280px); } }
+@keyframes petals-fall { from { transform:translateY(0) translateX(0) rotate(0); } to { transform:translateY(100vh) translateX(55px) rotate(28deg); } }
+@keyframes rise-in { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@media (max-width:760px) { .topbar { flex-wrap:wrap; height:auto; } .theme-switch { width:100%; justify-content:flex-start; flex-wrap:wrap; } .theme-button { font-size:.7rem; } }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }
