@@ -1,0 +1,96 @@
+/* Discovery layout: compact centered search/navigation inspired by modern anime catalogs. */
+.topbar {
+  display: grid;
+  grid-template-columns: auto auto minmax(220px, 1fr) 48px 48px;
+  align-items: center;
+  gap: 12px;
+  height: 66px;
+  padding: 9px 14px;
+  border-radius: 15px;
+  background: rgba(15, 15, 17, .92);
+}
+.brand-text { font-size: 1.45rem; letter-spacing: -.075em; }
+.brand-tv { margin-left: 3px; font-size: .56rem; letter-spacing: .04em; }
+.main-nav { gap: 14px; justify-content: flex-start; }
+.main-nav a { font-size: .78rem; white-space: nowrap; }
+.icon-button {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  background: rgba(255,255,255,.035);
+  color: rgba(255,255,255,.84);
+  font-size: 1.25rem;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.icon-button:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.08); }
+.search-box {
+  justify-self: center;
+  width: min(100%, 590px);
+  min-height: 48px;
+  border-radius: 12px;
+  background: #171719;
+  border-color: rgba(255,255,255,.09);
+}
+.search-box input { font-size: .9rem; }
+.search-box kbd { color: #aaa; background: transparent; font-size: 1rem; }
+.discovery-tools { display: none; }
+.search-status { min-height: 1em; margin: 8px 0 -12px; color: var(--muted); font-size: .8rem; }
+
+/* Top Airing uses compact landscape rows, like the supplied reference image. */
+.airing-list { display: grid; gap: 10px; max-width: 860px; }
+.airing-card {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr) 12px;
+  align-items: center;
+  min-height: 120px;
+  border-radius: 12px;
+  background: linear-gradient(110deg, rgba(33,33,35,.98), rgba(24,24,26,.96));
+}
+.airing-card .series-poster {
+  width: 84px;
+  height: 120px;
+  aspect-ratio: auto;
+  border-radius: 10px;
+}
+.airing-card .series-card-info { gap: 10px; padding: 14px 18px; }
+.airing-card .series-card-info strong { font-size: 1rem; font-weight: 500; }
+.airing-card .card-metadata { display:flex; flex-wrap:wrap; gap:8px; color:rgba(255,255,255,.45); font-size:.7rem; }
+.airing-card .card-metadata span { padding:3px 6px; border-radius:5px; background:rgba(255,255,255,.055); }
+.airing-card .airing-description { color:rgba(255,255,255,.44); font-size:.72rem; }
+.airing-dot { width:10px; height:10px; margin-right:14px; border-radius:50%; background:#a7f000; box-shadow:0 0 12px rgba(167,240,0,.34); }
+.catalog-badge { top:10px; right:10px; }
+.hero { min-height: 510px; }
+.hero-content { width: min(64%, 740px); }
+.hero h1, .hero-content h1 { margin:0; max-width:720px; font-size:clamp(2.4rem,5vw,4.7rem); line-height:.98; letter-spacing:-.055em; font-weight:900; }
+.hero-art .art-figure { background-size:cover; background-position:center 25%; }
+
+@media (max-width: 1050px) {
+  .topbar { grid-template-columns: auto auto minmax(180px,1fr) 44px 44px; gap:8px; }
+  .main-nav { gap:10px; }
+  .main-nav a { font-size:.72rem; }
+}
+@media (max-width: 760px) {
+  .topbar { display:flex; flex-wrap:wrap; height:auto; }
+  .menu-button { order:0; }
+  .brand-wrap { order:1; }
+  .main-nav { display:none; }
+  .search-box { order:2; flex:1; width:auto; min-width:130px; }
+  #searchButton { order:3; }
+  .random-button { order:4; }
+  .airing-list { max-width:none; }
+  .airing-card { grid-template-columns:72px minmax(0,1fr) 10px; min-height:104px; }
+  .airing-card .series-poster { width:72px; height:104px; }
+  .airing-card .series-card-info { padding:10px 12px; }
+}
+@media (max-width: 420px) {
+  .page-shell { padding:10px; }
+  .topbar { gap:7px; padding:8px; }
+  .brand-text { font-size:1.15rem; }
+  .search-box { min-height:42px; padding:0 10px; }
+  .search-box kbd { display:none; }
+  .icon-button { width:40px; height:40px; }
+}

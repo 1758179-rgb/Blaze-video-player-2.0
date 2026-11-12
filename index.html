@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blaze — Anime &amp; Movies</title>
-    <meta name="description" content="Discover anime series and movies in a polished personal media catalog." />
+    <meta name="description" content="Discover anime series and movies in a polished catalog." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://upload.wikimedia.org" />
@@ -12,108 +12,72 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="player.css" />
     <link rel="stylesheet" href="catalog.css" />
-    <link rel="stylesheet" href="themes.css" />
+    <link rel="stylesheet" href="discovery.css" />
   </head>
-  <body data-theme="bleach">
+  <body>
     <div class="page-shell">
       <header class="topbar">
+        <button id="menuButton" class="icon-button menu-button" type="button" aria-label="Scroll to anime catalog">☰</button>
         <a class="brand-wrap" href="#home" aria-label="Blaze home">
-          <span class="brand-icon">B</span>
-          <span class="brand-text">Blaze <span>ANIME + FILM</span></span>
+          <span class="brand-text">BLAZE<span class="brand-tv">TV</span></span>
         </a>
         <nav class="main-nav" aria-label="Main navigation">
-          <a href="#home">Home</a>
-          <a href="#top-airing">Top Airing</a>
-          <a href="#series">Anime</a>
-          <a href="#movies">Movies</a>
+          <a href="#home">Home</a><a href="#top-airing">Top Airing</a><a href="#popular">Popular</a><a href="#movies">Movies</a>
         </nav>
-        <div class="theme-switch" aria-label="Choose a theme">
-          <button type="button" class="theme-button" data-set-theme="bleach" aria-pressed="true">Bleach pink</button>
-          <button type="button" class="theme-button" data-set-theme="christmas" aria-pressed="false">Christmas</button>
-          <button type="button" class="theme-button" data-set-theme="halloween" aria-pressed="false">Halloween</button>
-        </div>
+        <form id="searchForm" class="search-box" role="search">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="catalogSearch" type="search" placeholder="Search Anime" autocomplete="off" aria-label="Search anime and movies" />
+          <kbd aria-hidden="true">⌘</kbd>
+        </form>
+        <button id="searchButton" class="icon-button" type="button" aria-label="Focus search">⌕</button>
+        <button id="randomAnimeButton" class="icon-button random-button" type="button" aria-label="Pick a random anime" title="Random anime">⤨</button>
       </header>
 
-      <main id="home" class="hero bleach-featured">
+      <main id="home" class="hero cyberpunk-featured">
         <div class="hero-content">
-          <p class="eyebrow" id="heroEyebrow">YOUR ANIME NIGHT STARTS HERE</p>
-          <h1 id="heroTitle">Find your next favorite</h1>
-          <div class="meta-row"><span class="meta-pill">ANIME</span><span>✦</span><span>Movies</span><span>✦</span><span>New discoveries</span></div>
-          <p class="description" id="heroDescription">Explore a hand-picked collection, search by title, or let us pick a random series for you.</p>
-          <div class="cta-row">
-            <a class="primary-btn" href="#top-airing">Explore anime</a>
-            <a class="secondary-btn" href="#movies">Browse movies</a>
-          </div>
+          <p class="eyebrow" id="heroEyebrow">FEATURED SERIES · NEW SEASON</p>
+          <h1 id="heroTitle">Cyberpunk: Edgerunners — Season 2</h1>
+          <div class="meta-row"><span class="meta-pill">TV</span><span>•</span><span>SCI-FI</span><span>•</span><span id="heroRating">★ 9.0</span></div>
+          <p class="description" id="heroDescription">Night City has a new story. Open the featured series to choose an episode.</p>
+          <div class="cta-row"><button id="featuredWatchButton" class="primary-btn" type="button">View episodes</button><a class="secondary-btn" href="#popular">Explore popular</a></div>
         </div>
         <div class="hero-art" aria-hidden="true"><div class="art-figure"></div></div>
       </main>
 
-      <section class="discovery-tools" aria-label="Find something to watch">
-        <label class="search-box" for="catalogSearch">
-          <span aria-hidden="true">⌕</span>
-          <input id="catalogSearch" type="search" placeholder="Search anime and movies..." autocomplete="off" />
-          <kbd>/</kbd>
-        </label>
-        <button id="randomAnimeButton" class="random-button" type="button"><span aria-hidden="true">⤨</span> Random anime</button>
-        <p id="searchStatus" class="search-status" aria-live="polite"></p>
-      </section>
+      <p id="searchStatus" class="search-status" aria-live="polite"></p>
 
-      <section id="top-airing" class="catalog-section" aria-labelledby="airingHeading">
-        <div class="section-header">
-          <div><p class="section-kicker">ON THE RADAR</p><h2 id="airingHeading">Top Airing</h2></div>
-          <p class="section-note">Series marked as currently airing in this catalog.</p>
-        </div>
-        <div id="topAiringGrid" class="series-grid"></div>
+      <section id="top-airing" class="catalog-section airing-section" aria-labelledby="airingHeading">
+        <div class="section-header"><div><p class="section-kicker">ON THE RADAR</p><h2 id="airingHeading">Top Airing</h2></div><p class="section-note">Series currently highlighted in this catalog.</p></div>
+        <div id="topAiringGrid" class="airing-list"></div>
       </section>
 
       <section id="popular" class="catalog-section" aria-labelledby="popularHeading">
-        <div class="section-header">
-          <div><p class="section-kicker">FAN FAVORITES</p><h2 id="popularHeading">Popular</h2></div>
-          <p class="section-note">Highly rated picks from your collection.</p>
-        </div>
+        <div class="section-header"><div><p class="section-kicker">FAN FAVORITES</p><h2 id="popularHeading">Popular</h2></div><p class="section-note">Popular picks, sorted by catalog rating.</p></div>
         <div id="popularGrid" class="series-grid"></div>
       </section>
 
       <section id="series" class="catalog-section" aria-labelledby="seriesHeading">
-        <div class="section-header">
-          <div><p class="section-kicker">BROWSE THE LIBRARY</p><h2 id="seriesHeading">Anime Series</h2></div>
-          <p class="section-note">Choose a show to view its episodes.</p>
-        </div>
+        <div class="section-header"><div><p class="section-kicker">BROWSE THE LIBRARY</p><h2 id="seriesHeading">Anime Series</h2></div><p class="section-note">Choose a show to view its episode list.</p></div>
         <div id="seriesGrid" class="series-grid"></div>
       </section>
 
       <section id="movies" class="catalog-section" aria-labelledby="moviesHeading">
-        <div class="section-header">
-          <div><p class="section-kicker">FEATURED FILMS</p><h2 id="moviesHeading">Movies</h2></div>
-          <p class="section-note">Movie availability depends on an authorized playback source.</p>
-        </div>
+        <div class="section-header"><div><p class="section-kicker">FEATURED FILMS</p><h2 id="moviesHeading">Movies</h2></div><p class="section-note">Select a movie to load its available player.</p></div>
         <div id="movieGrid" class="series-grid"></div>
       </section>
 
       <section id="watchSection" class="watch-section" aria-label="Video player" hidden>
-        <div class="watch-heading">
-          <div>
-            <p class="watch-kicker" id="watchSeriesSubtitle">LIBRARY</p>
-            <h2 id="watchSeriesTitle">Choose a title</h2>
-          </div>
-          <span class="player-quality">PLAYER</span>
-        </div>
+        <div class="watch-heading"><div><p class="watch-kicker" id="watchSeriesSubtitle">LIBRARY</p><h2 id="watchSeriesTitle">Choose a title</h2></div><span class="player-quality">PLAYER</span></div>
         <div class="watch-layout">
           <div class="player-main">
             <div class="video-wrapper">
               <iframe id="videoPlayer" src="about:blank" title="Video player" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-              <div id="playerPlaceholder" class="player-placeholder">
-                <span class="play-mark" aria-hidden="true">▶</span>
-                <p id="playerMessage">Select an episode or movie to play it here.</p>
-              </div>
+              <div id="playerPlaceholder" class="player-placeholder"><span class="play-mark" aria-hidden="true">▶</span><p id="playerMessage">Select an episode or movie to play it here.</p></div>
             </div>
             <h3 id="videoTitle" class="video-title">Select a title to start watching</h3>
-            <p class="player-hint">Playback is available only when the source permits embedding and you have permission to access it.</p>
+            <p class="player-hint">Playback depends on the source's sharing and embed settings.</p>
           </div>
-          <aside class="player-playlist" aria-label="Episodes or movie source">
-            <h3 id="playlistHeading">Episodes <span id="episodeCount"></span></h3>
-            <div id="episodeList" class="player-playlist-items"></div>
-          </aside>
+          <aside class="player-playlist" aria-label="Episodes or movie source"><h3 id="playlistHeading">Episodes <span id="episodeCount"></span></h3><div id="episodeList" class="player-playlist-items"></div></aside>
         </div>
       </section>
     </div>
