@@ -1,0 +1,23 @@
+/* Multiple featured slides, genre scroller and local watch history. */
+.featured-controls { position:absolute; z-index:4; top:20px; right:20px; display:flex; align-items:center; gap:10px; }
+.featured-arrow,.featured-counter { display:grid; min-width:44px; height:44px; place-items:center; border:0; border-radius:11px; background:rgba(9,10,12,.82); color:#f6f6f7; font-size:1.55rem; font-weight:800; }
+.featured-counter { min-width:78px; padding:0 12px; font-size:.9rem; }
+.featured-arrow:hover { background:#25262a; }
+.hero { background-position:center; background-size:cover; transition:background-image .3s ease; }
+.hero::before { z-index:0; }
+.hero-content { z-index:2; }
+.hero-art { z-index:1; }
+.genre-section { display:grid; grid-template-columns:38px minmax(0,1fr) 38px; align-items:center; gap:8px; margin:14px 0 0; }
+.genre-list { display:flex; gap:9px; overflow-x:auto; scrollbar-width:none; scroll-behavior:smooth; }
+.genre-list::-webkit-scrollbar { display:none; }
+.genre-chip,.genre-scroll,.history-clear { min-height:40px; padding:0 18px; border:1px solid rgba(255,255,255,.035); border-radius:10px; background:#171719; color:rgba(255,255,255,.88); font-size:.82rem; font-weight:650; white-space:nowrap; }
+.genre-chip:hover,.genre-chip[aria-pressed="true"] { background:#303034; border-color:rgba(255,255,255,.12); }
+.genre-scroll { display:grid; width:38px; min-height:40px; place-items:center; padding:0; border-radius:50%; font-size:1.35rem; }
+.history-list { display:grid; gap:9px; max-width:860px; }
+.history-entry { display:grid; grid-template-columns:64px minmax(0,1fr) auto; align-items:center; gap:13px; padding:9px; border:1px solid rgba(255,255,255,.07); border-radius:12px; background:linear-gradient(110deg,rgba(33,33,35,.95),rgba(22,22,24,.96)); color:inherit; text-align:left; }
+.history-entry img { width:64px; height:82px; object-fit:cover; border-radius:8px; background:#222; }
+.history-copy { display:grid; gap:5px; }
+.history-copy strong { font-size:.88rem; }
+.history-copy small,.history-time { color:rgba(255,255,255,.5); font-size:.72rem; }
+.history-clear { min-height:34px; padding:0 12px; font-size:.73rem; }
+@media(max-width:700px) { .featured-controls { top:12px; right:12px; gap:6px; } .featured-arrow,.featured-counter { min-width:36px; height:36px; } .featured-counter { min-width:62px; font-size:.78rem; } .hero-content { padding-top:38px; } .genre-section { grid-template-columns:32px minmax(0,1fr) 32px; gap:5px; } .genre-chip { min-height:38px; padding:0 14px; } .genre-scroll { width:32px; min-height:36px; } .history-entry { grid-template-columns:54px minmax(0,1fr); } .history-entry img { width:54px; height:72px; } .history-time { grid-column:2; } }
